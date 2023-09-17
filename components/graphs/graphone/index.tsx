@@ -10,26 +10,25 @@ import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Typography from '@mui/material/Typography';
 import Paper from '@mui/material/Paper';
-import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
-import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import DoneOutlineOutlinedIcon from '@mui/icons-material/DoneOutlineOutlined';
+import RemoveRedEyeIcon from '@mui/icons-material/RemoveRedEye';
 import Chip from '@mui/material/Chip';
+import Link from 'next/link';
+import PriorityHighIcon from '@mui/icons-material/PriorityHigh';
 
 function createData(
-    name: string,
-    calories: number,
-    fat: number,
-    carbs: number,
-    protein: number,
-    price: number,
+    orden: string,
+    placa: string,
+    origen: string,
+    destino: string,
+    status: string,
 ) {
     return {
-        name,
-        calories,
-        fat,
-        carbs,
-        protein,
-        price,
+        orden,
+        placa,
+        origen,
+        destino,
+        status,
         history: [
             {
                 date: '2020-01-05',
@@ -58,53 +57,24 @@ function Row(props: { row: ReturnType<typeof createData> }) {
                         size="small"
                         onClick={() => setOpen(!open)}
                     >
-                        {open ? <KeyboardArrowUpIcon sx={{ color: "#EB6609" }} /> : <KeyboardArrowDownIcon sx={{ color: "#EB6609" }} />}
+                        <Link href={`/orden/${row.orden}`}>
+                            <RemoveRedEyeIcon sx={{ color: "#EB6609" }} />
+                        </Link>
                     </IconButton>
                 </TableCell>
                 <TableCell component="th" scope="row">
-                    {row.name}
+                    {row.orden}
                 </TableCell>
-                <TableCell align="center">{row.calories}</TableCell>
-                <TableCell align="center">{row.fat}</TableCell>
-                <TableCell align="center">{row.carbs}</TableCell>
+                <TableCell align="center">{row.placa}</TableCell>
+                <TableCell align="center">{row.origen}</TableCell>
+                <TableCell align="center">{row.destino}</TableCell>
                 <TableCell align="center">
-                    <Chip icon={<DoneOutlineOutlinedIcon sx={{ color: "#EB6609" }} />} label="Ok" sx={{ color: "#EB6609" }} color="primary" variant="outlined" />
-                </TableCell>
-            </TableRow>
-            <TableRow>
-                <TableCell style={{ paddingBottom: 0, paddingTop: 0 }} colSpan={6}>
-                    <Collapse in={open} timeout="auto" unmountOnExit>
-                        <Box sx={{ margin: 1 }}>
-                            <Typography variant="h6" gutterBottom component="div" sx={{ color: "#EB6609" }}>
-                                History
-                            </Typography>
-                            <Table size="small" aria-label="purchases">
-                                <TableHead>
-                                    <TableRow>
-                                        <TableCell>Date</TableCell>
-                                        <TableCell>Customer</TableCell>
-                                        <TableCell align="right">Amount</TableCell>
-                                        <TableCell align="right">Total price ($)</TableCell>
-                                    </TableRow>
-                                </TableHead>
-                                <TableBody>
-                                    {row.history.map((historyRow) => (
-                                        <TableRow key={historyRow.date}>
-                                            <TableCell component="th" scope="row">
-                                                {historyRow.date}
-                                            </TableCell>
-                                            <TableCell>{historyRow.customerId}</TableCell>
-                                            <TableCell align="right">{historyRow.amount}</TableCell>
-                                            <TableCell align="right">
-                                                456789
-                                                {/* {Math.round(historyRow.amount * row.price * 100) / 100} */}
-                                            </TableCell>
-                                        </TableRow>
-                                    ))}
-                                </TableBody>
-                            </Table>
-                        </Box>
-                    </Collapse>
+                    {
+                        row.status === "Error" ?
+                            <Chip icon={<PriorityHighIcon sx={{ color: "#EB6609" }} />} label={row.status} sx={{ color: "#EB6609" }} color="primary" variant="outlined" />
+                            :
+                            <Chip icon={<DoneOutlineOutlinedIcon sx={{ color: "#EB6609" }} />} label={row.status} sx={{ color: "red" }} color="error" variant="outlined" />
+                    }
                 </TableCell>
             </TableRow>
         </React.Fragment>
@@ -112,11 +82,21 @@ function Row(props: { row: ReturnType<typeof createData> }) {
 }
 
 const rows = [
-    createData('Data 1', 159, 6.0, 24, 4.0, 3.99),
-    createData('Data 2', 237, 9.0, 37, 4.3, 4.99),
-    createData('Data 3', 262, 16.0, 24, 6.0, 3.79),
-    createData('Data 4', 305, 3.7, 67, 4.3, 2.5),
-    createData('Data 5', 356, 16.0, 49, 3.9, 1.5),
+    createData('330806', "KNL078", "CD FUNZA", "PEREIRA", "Error"),
+    createData("336360", "GZZ802", "CD FUNZA", "PEREIRA", "Ok"),
+    createData("333243", "KUS333", "CD FUNZA", "ARMENIA", "Error"),
+    createData("332178", "GZZ802", "CD FUNZA", "PEREIRA", "Error"),
+    createData("134790", "GUR578", "CD FUNZA", "PEREIRA", "Error"),
+    createData("338294", "KNL078", "CD FUNZA", "PEREIRA", "Ok"),
+    createData("336051", "KUS333", "CD FUNZA", "PEREIRA", "Error"),
+    createData("336003", "KNL078", "CD FUNZA", "PEREIRA", "Error"),
+    createData("336028", "GUR578", "CD FUNZA", "MANIZALES", "Error"),
+    createData("338321", "LCO390", "CD FUNZA", "ARMENIA", "Error"),
+    createData("338443", "KUS333", "CD FUNZA", "PEREIRA", "Error"),
+    createData("338998", "GZZ802", "CD FUNZA", "ARMENIA", "Error"),
+    createData("340262", "KUS333", "CD FUNZA", "PEREIRA", "Error"),
+    createData("340501", "KNL078", "CD FUNZA", "PEREIRA", "Error"),
+    createData("340547", "GUR578", "CD FUNZA", "MANIZALES", "Error")
 ];
 
 export const GraphOne = () => {
@@ -124,21 +104,21 @@ export const GraphOne = () => {
         <TableContainer component={Paper} sx={{ borderRadius: "15px" }}>
             <Table aria-label="collapsible table">
                 <TableHead>
-                    <TableRow>
+                    <TableRow >
                         <TableCell />
-                        <TableCell sx={{ color: "#EB6609" }}>Orden</TableCell>
-                        <TableCell sx={{ color: "#EB6609" }} align="center">Placa</TableCell>
-                        <TableCell sx={{ color: "#EB6609" }} align="center">Origen</TableCell>
-                        <TableCell sx={{ color: "#EB6609" }} align="center">Destino</TableCell>
-                        <TableCell sx={{ color: "#EB6609" }} align="center">Status</TableCell>
+                        <TableCell sx={{ color: "#EB6609", fontWeight: "bolder" }}>Orden</TableCell>
+                        <TableCell sx={{ color: "#EB6609", fontWeight: "bolder" }} align="center">Placa</TableCell>
+                        <TableCell sx={{ color: "#EB6609", fontWeight: "bolder" }} align="center">Origen</TableCell>
+                        <TableCell sx={{ color: "#EB6609", fontWeight: "bolder" }} align="center">Destino</TableCell>
+                        <TableCell sx={{ color: "#EB6609", fontWeight: "bolder" }} align="center">Status</TableCell>
                     </TableRow>
                 </TableHead>
                 <TableBody>
                     {rows.map((row) => (
-                        <Row key={row.name} row={row} />
+                        <Row key={row.orden} row={row} />
                     ))}
                 </TableBody>
             </Table>
-        </TableContainer>
+        </TableContainer >
     );
 }

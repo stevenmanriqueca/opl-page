@@ -1,21 +1,24 @@
 import React from 'react';
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Pie } from 'react-chartjs-2';
+import Stack from '@mui/material/Stack';
+import Typography from '@mui/material/Typography';
+import { Box } from '@mui/material';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
 var options = {
     responsive: true,
     maintainAspectRatio: false,
-    animation: true
+    animation: true,
 };
 
 var data = {
-    labels: [''],
+    labels: ['KNL078', 'KUS333', 'GZZ802', 'GUR578', 'LCO390'],
     datasets: [
         {
-            label: 'Utilidad',
-            data: [35, 20, 20, 15, 10],
+            label: '# Ordenes',
+            data: [4, 4, 3, 3, 1],
             backgroundColor: [
                 'rgba(255, 99, 132, 0.2)',
                 'rgba(255, 206, 86, 0.2)',
@@ -37,8 +40,17 @@ var data = {
 
 export const GraphThree = () => {
     return (
+
         <>
-            <Pie data={data} options={options as Object} style={{ width: "100px" }} />
+            <Stack direction="column">
+                <div>
+                    <Typography align='center' fontWeight="bolder" variant='h6'>Ordenes X Placa</Typography>
+                </div>
+                <Box>
+                    <Pie data={data} options={options as Object} style={{ width: "500px", margin: "10px" }} />
+                    {/* <Bar data={midata} options={misoptions as Object} style={{ width: "500px" }} /> */}
+                </Box>
+            </Stack>
         </>
     )
 }

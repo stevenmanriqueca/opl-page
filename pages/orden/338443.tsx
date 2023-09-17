@@ -127,7 +127,7 @@ function OrderDetailsPage() {
                         </Grid>
                     </div>
                 </Grid>
-                <Grid item xs={12} md={7}>
+                <Grid item xs={12} md={7} sx={{ borderLeft: "2px solid orange" }}>
                     <Typography fontWeight="bolder" variant='h3' textAlign="center" m={5} color="orange">Linea de tiempo</Typography>
                     <UITimeline data={dataOrder11} />
                 </Grid>

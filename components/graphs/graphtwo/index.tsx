@@ -25,8 +25,8 @@ ChartJS.register(
     Filler
 );
 
-const beneficios = [3, 3, 4, 4, 1];
-var meses = ["KNL078", "KUS333", "GZZ802", "GUR578", "LCO390"];
+const beneficios = [657000, 649250, 1038000, 994250, 265250];
+var placas = ["GUR578", "GZZ802", "KNL078", "KUS333", "LCO390"];
 
 var misoptions = {
     responsive: true,
@@ -38,8 +38,8 @@ var misoptions = {
     },
     scales: {
         y: {
-            min: 0,
-            max: 8
+            min: 1,
+            max: 1200000
         },
         x: {
             ticks: { color: 'rgb(233, 99, 10)' }
@@ -48,7 +48,7 @@ var misoptions = {
 };
 
 var midata = {
-    labels: meses,
+    labels: placas,
     datasets: [
         {
             label: 'ordenes',
@@ -65,13 +65,12 @@ export const GraphTwo = () => {
         <>
             <Stack direction="column">
                 <div>
-                    <Typography align='center'>Ordenes X Placa</Typography>
+                    <Typography align='center' fontWeight="bolder" variant='h6'>Utilidad X Placa</Typography>
                 </div>
                 <Box>
                     <Bar data={midata} options={misoptions as Object} style={{ width: "500px" }} />
                 </Box>
             </Stack>
-
         </>
     )
 }

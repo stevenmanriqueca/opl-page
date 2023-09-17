@@ -62,21 +62,20 @@ function OrderDetailsPage() {
 
     return (
         <MainLayout title='OPL | Orden #330806'>
-            <Grid container sx={{ bgcolor: "yellow" }} style={{ margin: 0, width: '100%' }}>
-                <Grid item xs={12} md={5} sx={{ bgcolor: "green" }}>
+            <Grid container style={{ margin: 0, width: '100%' }}>
+                <Grid item xs={12} md={5} >
                     <div
                         style={{
                             position: 'sticky',
                             top: '2px', // Ajusta la distancia desde la parte superior
-                            backgroundColor: "red",
                             zIndex: 1, // Asegura que las tarjetas estén por encima de la línea de tiempo
                             overflow: 'hidden', // Permite el scroll vertical si es necesario
                         }}
                     >
-                        <Typography fontWeight="bolder" variant='h3' textAlign="center" m={5}>Orden # 330806</Typography>
+                        <Typography fontWeight="bolder" variant='h3' textAlign="center" m={5} color="orange">Orden # 330806</Typography>
 
-                        <Typography textAlign="left" m={2} fontWeight="bolder" variant='h4'>Detalles Orden:</Typography>
-                        <Grid container sx={{ bgcolor: "pink", width: "100%" }}>
+                        <Typography textAlign="left" m={2} fontWeight="bolder" variant='h4' color="orange">Detalles Orden:</Typography>
+                        <Grid container sx={{ width: "100%" }}>
                             <Grid item xs={12} sm={6} md={12} lg={6} xl={6}>
                                 {/* <div style={{ marginLeft: "80px" }}>
 
@@ -230,8 +229,8 @@ function OrderDetailsPage() {
                         </Grid>
                     </div>
                 </Grid>
-                <Grid item xs={12} md={7}>
-                    <Typography fontWeight="bolder" variant='h3' textAlign="center" m={5}>Linea de tiempo</Typography>
+                <Grid item xs={12} md={7} sx={{ borderLeft: "2px solid orange" }}>
+                    <Typography fontWeight="bolder" variant='h3' textAlign="center" m={5} color="orange">Linea de tiempo</Typography>
                     <UITimeline data={dataOrder1} />
                 </Grid>
             </Grid>

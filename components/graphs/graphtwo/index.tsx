@@ -51,7 +51,7 @@ var midata = {
     labels: placas,
     datasets: [
         {
-            label: 'ordenes',
+            label: 'Utilidad',
             data: beneficios,
             backgroundColor: 'rgb(233, 99, 10)'
         }

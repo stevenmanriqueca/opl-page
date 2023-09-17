@@ -9,6 +9,55 @@ import { MainLayout } from '@/components/layouts';
 import Box from '@mui/material/Box';
 import { dataOrder1 } from '../../data/order1';
 
+import { Bar } from 'react-chartjs-2';
+import {
+    Chart as ChartJS,
+    CategoryScale,
+    LinearScale,
+    PointElement,
+    BarElement,
+    Title,
+    Tooltip,
+    Legend,
+    Filler,
+} from 'chart.js';
+
+ChartJS.register(
+    CategoryScale,
+    LinearScale,
+    PointElement,
+    BarElement,
+    Title,
+    Tooltip,
+    Legend,
+    Filler
+);
+
+const data = {
+    labels: ['Cuenta X Cobrar', 'Cuenta X Pagar', 'UTILIDAD'],
+    datasets: [
+        {
+            label: 'Valores en Pesos',
+            data: [2059000, 1750000, 309000],
+            backgroundColor: ['rgba(255, 99, 132, 0.6)', 'rgba(75, 192, 192, 0.6)', 'rgba(255, 205, 86, 0.6)'],
+            borderColor: ['rgba(255, 99, 132, 1)', 'rgba(75, 192, 192, 1)', 'rgba(255, 205, 86, 1)'],
+            borderWidth: 1,
+        },
+    ],
+};
+
+const options = {
+    scales: {
+        y: {
+            beginAtZero: true,
+            title: {
+                display: true,
+                text: 'Valores en Pesos',
+            },
+        },
+    },
+};
+
 function OrderDetailsPage() {
 
     return (
@@ -175,6 +224,9 @@ function OrderDetailsPage() {
                                 <Typography variant="h5" fontWeight="bolder" component="div" textAlign="center">Origen - Destino</Typography>
                                 <Typography variant="h5" component="div" textAlign="center">CD Funza {"►"} Pereira</Typography>
                             </UIOrderCard> */}
+                            <Grid item xs={12} md={12} mt={8}>
+                                <Bar data={data} options={options} />
+                            </Grid>
                         </Grid>
                     </div>
                 </Grid>

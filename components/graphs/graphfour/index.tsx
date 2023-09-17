@@ -91,7 +91,7 @@ export const GraphFour = () => {
                 </div>
                 <Box>
                     {/* <Pie data={data} options={options as Object} style={{ width: "500px", margin: "10px" }} /> */}
-                    <Line data={data} options={options} style={matches ? { width: "320px" } : { width: "600px", height: "200px" }} />
+                    <Line data={data} options={options} style={matches ? { width: "320px" } : { width: "400px", height: "200px" }} />
                     {/* <Line data={data} options={options} width={"600px"} height={"200px"} /> */}
 
                     {/* <Bar data={midata} options={misoptions as Object} style={{ width: "500px" }} /> */}

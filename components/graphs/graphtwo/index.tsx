@@ -69,7 +69,7 @@ export const GraphTwo = () => {
                     <Typography align='center' fontWeight="bolder" variant='h6'>Utilidad X Placa</Typography>
                 </div>
                 <Box>
-                    <Bar data={midata} options={misoptions as Object} style={matches ? { width: "320px", margin: "10px" } : { width: "600px", margin: "10px" }} />
+                    <Bar data={midata} options={misoptions as Object} style={matches ? { width: "320px", margin: "10px" } : { width: "400px", margin: "10px" }} />
                 </Box>
             </Stack>
         </>

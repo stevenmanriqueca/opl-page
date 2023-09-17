@@ -1,5 +1,5 @@
 import React from 'react'
-import { Box, Stack, Typography } from '@mui/material';
+import { Box, Stack, Typography, useMediaQuery, useTheme } from '@mui/material';
 
 import { Bar } from 'react-chartjs-2';
 import {
@@ -59,7 +59,8 @@ var midata = {
 };
 
 export const GraphTwo = () => {
-
+    const theme = useTheme();
+    const matches = useMediaQuery(theme.breakpoints.down('sm'));
 
     return (
         <>
@@ -68,7 +69,7 @@ export const GraphTwo = () => {
                     <Typography align='center' fontWeight="bolder" variant='h6'>Utilidad X Placa</Typography>
                 </div>
                 <Box>
-                    <Bar data={midata} options={misoptions as Object} style={{ width: "500px" }} />
+                    <Bar data={midata} options={misoptions as Object} style={matches ? { width: "320px", margin: "10px" } : { width: "600px", margin: "10px" }} />
                 </Box>
             </Stack>
         </>

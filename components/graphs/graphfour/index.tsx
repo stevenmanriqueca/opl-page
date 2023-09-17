@@ -1,4 +1,4 @@
-import { Stack, Typography, Box } from "@mui/material";
+import { Stack, Typography, Box, useMediaQuery, useTheme } from "@mui/material";
 import React from "react";
 import { Line } from "react-chartjs-2";
 import {
@@ -81,6 +81,8 @@ const options = {
 };
 
 export const GraphFour = () => {
+    const theme = useTheme();
+    const matches = useMediaQuery(theme.breakpoints.down('sm'));
     return (
         <>
             <Stack direction="column">
@@ -89,7 +91,8 @@ export const GraphFour = () => {
                 </div>
                 <Box>
                     {/* <Pie data={data} options={options as Object} style={{ width: "500px", margin: "10px" }} /> */}
-                    <Line data={data} options={options} width={"600px"} height={"200px"} />
+                    <Line data={data} options={options} style={matches ? { width: "320px" } : { width: "600px", height: "200px" }} />
+                    {/* <Line data={data} options={options} width={"600px"} height={"200px"} /> */}
 
                     {/* <Bar data={midata} options={misoptions as Object} style={{ width: "500px" }} /> */}
                 </Box>

@@ -3,7 +3,7 @@ import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { Pie } from 'react-chartjs-2';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
-import { Box } from '@mui/material';
+import { Box, useMediaQuery, useTheme } from '@mui/material';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 
@@ -39,6 +39,11 @@ var data = {
 };
 
 export const GraphThree = () => {
+
+
+    const theme = useTheme();
+    const matches = useMediaQuery(theme.breakpoints.down('sm'));
+
     return (
 
         <>
@@ -47,7 +52,8 @@ export const GraphThree = () => {
                     <Typography align='center' fontWeight="bolder" variant='h6'>Ordenes X Placa</Typography>
                 </div>
                 <Box>
-                    <Pie data={data} options={options as Object} style={{ width: "500px", margin: "10px" }} />
+                    <Pie data={data} options={options as Object} style={matches ? { width: "380px", margin: "10px" } : { width: "500px", margin: "10px" }} />
+                    {/* <Pie data={data} options={options as Object} style={{ width: "auto", margin: "10px" }} /> */}
                     {/* <Bar data={midata} options={misoptions as Object} style={{ width: "500px" }} /> */}
                 </Box>
             </Stack>

@@ -88,7 +88,7 @@ const HomePage = () => {
 
             <Grid item xs={12}>
               <div style={{ width: "100%", height: "20px", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                <Typography align="center" sx={{ color: "darkblue" }}>Powered By A&T Soluciones Empresariales</Typography>
+                <Typography align="center" fontWeight="bolder" sx={{ color: "darkblue" }}>Powered By A&T Soluciones Empresariales</Typography>
               </div>
             </Grid>
           </Grid>

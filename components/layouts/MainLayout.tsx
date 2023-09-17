@@ -1,5 +1,6 @@
 import React from "react";
 import Head from "next/head";
+import Box from "@mui/material/Box";
 
 interface Props {
     title: string;
@@ -13,7 +14,9 @@ export const MainLayout: React.FC<Props> = ({ title, children }) => {
                 <title>{title}</title>
             </Head>
             <main>
-                {children}
+                <Box>
+                    {children}
+                </Box>
             </main>
         </>
     )
